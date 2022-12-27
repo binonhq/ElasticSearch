@@ -43,11 +43,11 @@ class Arango:
         result += smart_contracts
         return result
 
-
-if __name__ == "__main__":
-    db = Arango()
-    rs = db.get_project()
-    for i in rs:
-        print(i)
-        print(list(i["tags"].keys()))
-    # print(rs)
+#
+# if __name__ == "__main__":
+#     db = Arango()
+#     rs = db.get_project()
+#     for i in rs:
+#         print(i)
+#         print(list(i["tags"].keys()))
+#     # print(rs)

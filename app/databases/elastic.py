@@ -17,13 +17,13 @@ class Elastic:
         i = 1
         for data in data_list:
             data = dict(data)
-            print(i)
-            print(data)
+            # print(i)
+            # print(data)
             self.es.index(
                 index=index,
                 body=data
             )
-            i += 1
+            # i += 1
         return True
 
     def autocomplete(self, query, index=None):
