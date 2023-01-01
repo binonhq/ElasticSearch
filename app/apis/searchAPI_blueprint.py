@@ -12,6 +12,7 @@ app.blueprint(openapi2_blueprint)
 
 esearch = SearchFilter()
 
+
 @app.route("/search")
 @doc.tag("Elastic Search Test")
 @doc.summary("Search data by type and string")
@@ -32,6 +33,7 @@ async def search(request):
     elif index_type == "smart_contracts":
         result = esearch.contract_search_v1(search_str=search_str, limit=limit)
     return result
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
