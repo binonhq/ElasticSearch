@@ -29,7 +29,7 @@ class SearchFilter:
                     {"wildcard": {
                         "name": {
                             "value": "{}*".format(search_str),
-                            "boost": 1.5,
+                            "boost": 2,
                             "case_insensitive": "true",
                             "rewrite": "constant_score"
                         }
@@ -49,7 +49,10 @@ class SearchFilter:
             hit_ = {
                 "_id": i["_id"],
                 "_score": i["_score"],
+                "id": i["_source"]["id"],
                 "name": i["_source"]["name"],
+                "tags": i["_source"]["tags"],
+                "type": i["_source"]["type"],
                 "_description": i["_source"]["description"]
             }
             hits_.append(hit_)
@@ -118,7 +121,10 @@ class SearchFilter:
             hit_ = {
                 "_id": i["_id"],
                 "_score": i["_score"],
+                "id": i["_source"]["id"],
                 "name": i["_source"]["name"],
+                "tags": i["_source"]["tags"],
+                "type": i["_source"]["type"]
             }
             hits_.append(hit_)
         return json({"total_hits": total_hits,

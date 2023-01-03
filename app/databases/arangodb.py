@@ -20,9 +20,10 @@ class Arango:
                 "id": doc._key,
                 "name": doc.name,
                 "tags": {{
-                    "project": 1
+                    "projects": 1
                     }},
-                "type": "project",
+                "type": "projects",
+                "description" : doc.description,
 
             }}""")
         result += projects
@@ -30,16 +31,16 @@ class Arango:
 
     def get_smart_contract(self):
         result = []
-        smart_contracts = self.db.aql.execute(f"""
+        smart_contracts = self.db.aql.execute(query=f"""
                     for doc in sc_inv_ngram
                     filter NOT_NULL(doc.name)
                     return {{           
-                       "id": doc.address,
+                       "id": doc._key,
                        "name": doc.name,
                        "tags": doc.tags,
-                       "type": "smart_contract"
+                       "type": "smart_contracts"
                     }}
-                    """)
+                    """, batch_size=1000)
         result += smart_contracts
         return result
 

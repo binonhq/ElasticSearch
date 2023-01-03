@@ -18,13 +18,13 @@ _elastic = Elastic()
 @app.route("/import_data_to_elasticsearch")
 @doc.tag("Import data")
 @doc.summary("Import data from ArangoDB to Elasticsearch")
-@doc.consumes(doc.String(name="Type", description="'project' or 'smart_contract'"), location="query", required=True)
+@doc.consumes(doc.String(name="Type", description="'projects' or 'smart_contracts'"), location="query", required=True)
 @doc.response(400, {"message": str}, description="Bad Request")
 async def import_data_to_es(request):
     import_type = request.args.get('Type')
-    if import_type == 'project':
+    if import_type == 'projects':
         data_list = _arango.get_project()
-    elif import_type == 'smart_contract':
+    elif import_type == 'smart_contracts':
         data_list = _arango.get_smart_contract()
     else:
         return json({"Error": "Wrong type"})
