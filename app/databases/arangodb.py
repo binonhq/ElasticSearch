@@ -44,6 +44,7 @@ class Arango:
         result += smart_contracts
         return result
 
+
 #
 # if __name__ == "__main__":
 #     db = Arango()
@@ -52,3 +53,19 @@ class Arango:
 #         print(i)
 #         print(list(i["tags"].keys()))
 #     # print(rs)
+
+pj_obj = {
+    "id": "doc._key",
+    "name": "doc.name",
+    "tags": {
+        "projects": 1
+    },
+    "type": "projects",
+    "description": "doc.description",
+}
+cntx_obj = {
+    "id": "doc._key",
+    "name": "doc.name",
+    "tags": "doc.tags",
+    "type": "smart_contracts"
+}
